@@ -1,4 +1,5 @@
 from flask import Flask, request, abort
+import logging
 import os
 
 from linebot import (
@@ -10,6 +11,11 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
+
+# ロガーの取得
+werkzeug_logger = logging.getLogger("werkzeug")
+# レベルの変更
+werkzeug_logger.setLevel(logging.INFO)
 
 app = Flask(__name__)
 
