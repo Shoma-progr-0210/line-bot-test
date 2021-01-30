@@ -59,8 +59,8 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_msg))
-    elif event.message.text.startswith("カウント\n"):
-        txt = event.message.text.replace(" ","").replace("　","").replace("\n","").lstrip("カウント")
+    elif event.message.text.startswith("カウント\n") or event.message.text.startswith("count\n"):
+        txt = event.message.text.replace(" ","").replace("　","").replace("\n","").lstrip("カウント").lstrip("count")
         reply_msg = "文字数は " + str(len(txt)) + "です。"
         line_bot_api.reply_message(
             event.reply_token,
