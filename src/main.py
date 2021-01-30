@@ -53,8 +53,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == "ヘルプ" or event.message.text == "help":
-        reply_msg = "メニュー:\n"
-        + "(なし) => オウム返し\n"
+        reply_msg = "メニュー:\n" \
+        + "(なし) => オウム返し\n" \
         + "カウント or count => 二行目からの文字数を数えます\n"
         line_bot_api.reply_message(
             event.reply_token,
