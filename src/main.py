@@ -1,6 +1,7 @@
 from flask import Flask, request, abort
 import logging
 import os
+import sys
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -12,12 +13,15 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 
-# ロガーの取得
-werkzeug_logger = logging.getLogger("werkzeug")
-# レベルの変更
-werkzeug_logger.setLevel(logging.INFO)
 
 app = Flask(__name__)
+
+# ロガーの取得
+werkzeug_logger = logging.getLogger("werkzeug")
+# ログを標準出力に出力する
+werkzeug_logger.addHandler(logging.StreamHandler(sys.stdout))
+# レベルの変更
+werkzeug_logger.setLevel(logging.INFO)
 
 #環境変数取得
 CHANNEL_ACCESS_TOKEN = os.environ["CHANNEL_ACCESS_TOKEN"]
