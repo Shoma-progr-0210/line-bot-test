@@ -52,9 +52,23 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text))
+    if event.message.text == "ヘルプ" or event.message.text == "help":
+        reply_msg = "メニュー:\n"
+        + "(なし) => オウム返し\n"
+        + "カウント or count => 二行目からの文字数を数えます\n"
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=reply_msg))
+    elif event.message.text.startswith("文字数カウント\n"):
+        txt = event.message.text.replace(" ","").replace("　","").replace("\n","").lstrip("文字数カウント")
+        reply_msg = "文字数は " + len(txt) + "です。"
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=reply_msg))
+    else:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text))
 
 if __name__ == "__main__":
 #    app.run()
