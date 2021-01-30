@@ -16,12 +16,6 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-# # ロガーの取得
-# werkzeug_logger = logging.getLogger("werkzeug")
-# # ログを標準出力に出力する
-# werkzeug_logger.addHandler(logging.StreamHandler(sys.stdout))
-# # レベルの変更
-# werkzeug_logger.setLevel(logging.INFO)
 
 # ログを標準出力に出力する
 app.logger.addHandler(logging.StreamHandler(sys.stdout))
