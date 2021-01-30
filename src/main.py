@@ -55,7 +55,7 @@ def handle_message(event):
     if event.message.text == "ヘルプ" or event.message.text == "help":
         reply_msg = "メニュー:\n" \
         + "(なし) => オウム返し\n" \
-        + "カウント or count => 二行目からの文字数を数えます\n"
+        + "カウント or count => 二行目からの文字数を数えます(改行、空白は除きます)"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_msg))
