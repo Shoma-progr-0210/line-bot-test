@@ -16,12 +16,17 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-# ロガーの取得
-werkzeug_logger = logging.getLogger("werkzeug")
+# # ロガーの取得
+# werkzeug_logger = logging.getLogger("werkzeug")
+# # ログを標準出力に出力する
+# werkzeug_logger.addHandler(logging.StreamHandler(sys.stdout))
+# # レベルの変更
+# werkzeug_logger.setLevel(logging.INFO)
+
 # ログを標準出力に出力する
-werkzeug_logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
 # レベルの変更
-werkzeug_logger.setLevel(logging.INFO)
+app.logger.setLevel(logging.INFO)
 
 #環境変数取得
 CHANNEL_ACCESS_TOKEN = os.environ["CHANNEL_ACCESS_TOKEN"]
