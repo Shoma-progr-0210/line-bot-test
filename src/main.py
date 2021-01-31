@@ -72,6 +72,7 @@ def get_response_message(msg_from):
         return reply_msg
     else:
         # それ以外はオウム返し
+        reply_msg = msg_from
         return reply_msg
 
 @app.route("/")
