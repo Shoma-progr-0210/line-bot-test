@@ -38,10 +38,10 @@ handler = WebhookHandler(CHANNEL_SECRET)
 # DBコネクション取得関数
 def get_connection():
     dsn = "host=" + DB_HOST \
-        + "port=" + str(DB_PORT) \
-        + "dbname=" + DB_DBNAME \
-        + "user=" + DB_USER \
-        + "password=" + DB_PASSWORD
+        + " port=" + str(DB_PORT) \
+        + " dbname=" + DB_DBNAME \
+        + " user=" + DB_USER \
+        + " password=" + DB_PASSWORD
     
     return psycopg2.connect(dsn)
 
