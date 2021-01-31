@@ -46,8 +46,8 @@ def get_connection():
     return psycopg2.connect(dsn)
 
 def get_response_message(msg_from):
-    # "日付"が入力された時だけDBアクセス
     if msg_from=="日付":
+        # "日付"が入力された時だけDBアクセス
         with get_connection() as conn:
             with conn.cursor(name="cs") as cur:
                 try:
@@ -59,12 +59,14 @@ def get_response_message(msg_from):
                     reply_msg = "exception"
                     return reply_msg
     elif msg_from == "ヘルプ" or msg_from == "help":
+        # ヘルプメニュー
         reply_msg = "メニュー:\n" \
         + "(なし) => オウム返し\n" \
         + "日付 => 今日の日付を返します\n" \
         + "カウント or count => 二行目からの文字数を数えます(改行、空白は除きます)"
         return reply_msg
     elif msg_from.startswith("カウント\n") or msg_from.startswith("count\n"):
+        # メッセージの文字数カウント
         txt = msg_from.replace(" ","").replace("　","").replace("\n","").lstrip("カウント").lstrip("count")
         reply_msg = "文字数は " + str(len(txt)) + " 文字です。"
         return reply_msg
@@ -95,23 +97,9 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if event.message.text == "ヘルプ" or event.message.text == "help":
-        reply_msg = "メニュー:\n" \
-        + "(なし) => オウム返し\n" \
-        + "カウント or count => 二行目からの文字数を数えます(改行、空白は除きます)"
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=reply_msg))
-    elif event.message.text.startswith("カウント\n") or event.message.text.startswith("count\n"):
-        txt = event.message.text.replace(" ","").replace("　","").replace("\n","").lstrip("カウント").lstrip("count")
-        reply_msg = "文字数は " + str(len(txt)) + " 文字です。"
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=reply_msg))
-    else:
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.message.text))
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=get_response_message(event.message.text)))
 
 if __name__ == "__main__":
 #    app.run()
