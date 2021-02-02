@@ -26,7 +26,7 @@ class Schedule(Base):
         :param time:
         :return: Schedule
         """
-        obj = cls(id=id, user_id=user_id, name=name, message=message, time=time)
+        obj = cls(user_id=user_id, name=name, message=message, time=time)
         db.session.add(obj)
         return obj
 
