@@ -39,7 +39,7 @@ handler = WebhookHandler(CHANNEL_SECRET)
     
 #     return psycopg2.connect(dsn)
 
-def get_response_message(msg_from):
+# def get_response_message(msg_from):
     # if msg_from=="日付":
     #     # "日付"が入力された時だけDBアクセス
     #     with get_connection() as conn:
