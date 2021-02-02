@@ -2,6 +2,7 @@ from flask import Flask, request, abort
 import psycopg2
 import os
 from datetime import datetime, timedelta
+import traceback
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -99,6 +100,7 @@ def handle_message(event):
             Schedule.create(profile.user_id, profile.display_name, message, time)
             reply_msg = "リマインドを登録しました。"
         except:
+            app.logger.warning(traceback.format_exc())
             reply_msg = "リマインドの登録に失敗しました。"
     else:
         # それ以外はオウム返し
