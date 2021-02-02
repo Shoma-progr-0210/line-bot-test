@@ -30,29 +30,6 @@ CHANNEL_SECRET = os.environ["CHANNEL_SECRET"]
 line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(CHANNEL_SECRET)
 
-# # DBコネクション取得関数
-# def get_connection():
-#     dsn = "host=" + DB_HOST \
-#         + " port=" + str(DB_PORT) \
-#         + " dbname=" + DB_DBNAME \
-#         + " user=" + DB_USER \
-#         + " password=" + DB_PASSWORD
-    
-#     return psycopg2.connect(dsn)
-
-# def get_response_message(msg_from):
-    # if msg_from=="日付":
-    #     # "日付"が入力された時だけDBアクセス
-    #     with get_connection() as conn:
-    #         with conn.cursor(name="cs") as cur:
-    #             try:
-    #                 sql_str = "SELECT TO_CHAR(CURRENT_DATE, 'yyyy/mm/dd');"
-    #                 cur.execute(sql_str)
-    #                 (reply_msg,) = cur.fetchone()
-    #                 return reply_msg
-    #             except:
-    #                 reply_msg = "exception"
-    #                 return reply_msg
 
 @app.route("/")
 def hello_world():
@@ -98,7 +75,7 @@ def handle_message(event):
             data = msg_from.split("\n")
             message = data[2]
             time = datetime.strptime(data[1], '%Y/%m/%d %H:%M')
-            result = Schedule.create(profile.user_id, profile.display_name, message, time)
+            result = Schedule.create(event.source.user_id, profile.display_name, message, time)
             app.logger.info(f"create => {result}")
 
             reply_msg = "リマインドを登録しました。"
@@ -111,9 +88,6 @@ def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=reply_msg))
-    # line_bot_api.reply_message(
-    #     event.reply_token,
-    #     TextSendMessage(text=event.source.user_id))
 
 if __name__ == "__main__":
 #    app.run()
