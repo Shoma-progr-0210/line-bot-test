@@ -81,8 +81,8 @@ def handle_message(event):
         # ヘルプメニュー
         reply_msg = "メニュー:\n" \
         + "(なし) => オウム返し\n" \
-        # + "日付 => 今日の日付を返します\n" \
         + "カウント or count => 二行目からの文字数を数えます(改行、空白は除きます)"
+        # + "日付 => 今日の日付を返します\n" \
     elif msg_from.startswith("カウント\n") or msg_from.startswith("count\n"):
         # メッセージの文字数カウント
         txt = msg_from.replace(" ","").replace("　","").replace("\n","").lstrip("カウント").lstrip("count")
