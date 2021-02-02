@@ -87,7 +87,7 @@ def handle_message(event):
         # メッセージの文字数カウント
         txt = msg_from.replace(" ","").replace("　","").replace("\n","").lstrip("カウント").lstrip("count")
         reply_msg = "文字数は " + str(len(txt)) + " 文字です。"
-    elif msg_from == "登録\n":
+    elif msg_from.startswith("登録\n"):
         # 登録
         # 時間: %Y/%m/%d %H:%M
         # メッセージ
