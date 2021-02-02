@@ -1,4 +1,4 @@
-from reminder.app import db
+from reminder.database import db
 
 
 class Base(db.Model):
