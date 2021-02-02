@@ -95,7 +95,7 @@ def handle_message(event):
     #     TextSendMessage(text=get_response_message(event.message.text)))
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.sourse.user_id))
+        TextSendMessage(text=event.source.user_id))
 
 if __name__ == "__main__":
 #    app.run()
