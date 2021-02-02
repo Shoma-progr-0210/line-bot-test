@@ -76,7 +76,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    msg_from = event.massage.text
+    msg_from = event.message.text
     if msg_from == "ヘルプ" or msg_from == "help":
         # ヘルプメニュー
         reply_msg = "メニュー:\n" \
