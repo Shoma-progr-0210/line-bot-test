@@ -75,7 +75,7 @@ def handle_message(event):
             data = msg_from.split("\n")
             message = data[2]
             time = datetime.strptime(data[1], '%Y/%m/%d %H:%M')
-            result = Schedule.create(event.source.user_id, profile.display_name, message, time)
+            result = Schedule.create(profile.user_id, profile.display_name, message, time)
             app.logger.info(f"create => {result}")
 
             reply_msg = "リマインドを登録しました。"

@@ -72,7 +72,7 @@ class Schedule(Base):
 
 
     def __init__(self, user_id, name, message, time):
-        self.user_id
+        self.user_id = user_id
         self.name = name
         self.message = message
         self.time = time
