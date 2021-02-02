@@ -4,7 +4,6 @@ import os
 import logging
 import sys
 
-from .models import models
 
 app = Flask(__name__)
 
