@@ -28,6 +28,7 @@ class Schedule(Base):
         """
         obj = cls(user_id=user_id, name=name, message=message, time=time)
         db.session.add(obj)
+        db.session.commit()
         return obj
 
     @classmethod
@@ -56,6 +57,7 @@ class Schedule(Base):
         """
         obj = db.session.query(cls).filter(cls.user_id == user_id).first()
         db.session.delete(obj)
+        db.session.commit()
 
     @classmethod
     def delete_by_time(cls, time):
@@ -66,6 +68,7 @@ class Schedule(Base):
         """
         obj = db.session.query(cls).filter(cls.time < time).first()
         db.session.delete(obj)
+        db.session.commit()
 
 
     def __init__(self, user_id, name, message, time):
