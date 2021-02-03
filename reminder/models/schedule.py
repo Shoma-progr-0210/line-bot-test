@@ -1,12 +1,5 @@
-from reminder.database import db
-
-
-class Base(db.Model):
-    __abstract__ = True
-
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    date_created = db.Column(db.DateTime,  default=db.func.current_timestamp())
-    date_updated = db.Column(db.DateTime,  default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
+from reminder.database import db, ma
+from reminder.models.base import Base
 
 class Schedule(Base):
     __tablename__ = 'schedule'
@@ -81,3 +74,8 @@ class Schedule(Base):
         return 'Schedule(id={0}, user_id={1}, name={2}, message={3}, time{4})'.format(
             self.id, self.user_id, self.name, self.message, self.time
         )
+
+class ScheduleSchema(ma.ModelSchema):
+    class Meta:
+      model = Schedule
+      fields = ('id', 'user_id', 'name', 'message', 'time')

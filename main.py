@@ -15,7 +15,7 @@ from linebot.models import (
 )
 
 from reminder.app import app
-from reminder.models.models import Schedule
+from reminder.models.schedule import Schedule, ScheduleSchema
 
 
 #環境変数取得
@@ -85,7 +85,9 @@ def handle_message(event):
             reply_msg = "リマインドの登録に失敗しました。"
     elif msg_from.startswith("予定一覧"):
         profile = line_bot_api.get_profile(event.source.user_id)
-        reply_msg = "\n".join(list(Schedule.get_by_user_id(profile.user_id)))
+        schedules = Schedule.get_by_user_id(profile.user_id)
+        schedule_schema = ScheduleSchema(many=True)
+        reply_msg = schedule_schema.dump(schedules).data
     else:
         # それ以外はオウム返し
         reply_msg = msg_from
