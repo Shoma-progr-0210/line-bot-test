@@ -38,8 +38,7 @@ class Schedule(Base):
         :param user_id:
         :return: ユーザScheduleリスト
         """
-        result = db.session.query(cls).filter(cls.user_id == user_id)
-        return result
+        return db.session.query(cls).filter(cls.user_id == user_id).all()
 
     # @classmethod
     # def get_all(cls):
