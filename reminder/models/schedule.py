@@ -75,6 +75,7 @@ class Schedule(Base):
             self.id, self.user_id, self.name, self.message, self.time
         )
 
-class ScheduleSchema(ma.Schema):
+class ScheduleSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
-      fields = ('id', 'user_id', 'name', 'message', 'time')
+        model = Schedule
+        fields = ('id', 'user_id', 'name', 'message', 'time')
