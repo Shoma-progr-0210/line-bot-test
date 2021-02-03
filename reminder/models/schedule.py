@@ -71,7 +71,7 @@ class Schedule(Base):
         self.time = time
 
     def __repr__(self):
-        return 'Schedule(id={0}, user_id={1}, name={2}, message={3}, time{4})'.format(
+        return 'Schedule(id={0}, user_id={1}, name={2}, message={3}, time={4})'.format(
             self.id, self.user_id, self.name, self.message, self.time
         )
 
