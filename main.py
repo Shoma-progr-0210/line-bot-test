@@ -60,7 +60,6 @@ def handle_message(event):
         reply_msg = "メニュー:\n" \
         + "(なし) => オウム返し\n" \
         + "カウント or count => 二行目からの文字数を数えます(改行、空白は除きます)"
-        # + "日付 => 今日の日付を返します\n" \
     elif msg_from.startswith("カウント\n") or msg_from.startswith("count\n"):
         # メッセージの文字数カウント
         txt = msg_from.replace(" ","").replace("　","").replace("\n","").lstrip("カウント").lstrip("count")
@@ -68,6 +67,7 @@ def handle_message(event):
     elif msg_from.startswith("登録\n"):
         # 登録
         # 時間: %Y/%m/%d %H:%M
+        # 予定名
         # メッセージ
         try:
             profile = line_bot_api.get_profile(event.source.user_id)
@@ -83,6 +83,9 @@ def handle_message(event):
         except:
             app.logger.warning(traceback.format_exc())
             reply_msg = "リマインドの登録に失敗しました。"
+    elif msg_from.startswith("予定一覧\n"):
+        profile = line_bot_api.get_profile(event.source.user_id)
+        reply_msg = "\n".join(Schedule.get_by_id(profile.user_id))
     else:
         # それ以外はオウム返し
         reply_msg = msg_from
