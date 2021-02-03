@@ -83,9 +83,9 @@ def handle_message(event):
         except:
             app.logger.warning(traceback.format_exc())
             reply_msg = "リマインドの登録に失敗しました。"
-    elif msg_from.startswith("予定一覧\n"):
+    elif msg_from.startswith("予定一覧"):
         profile = line_bot_api.get_profile(event.source.user_id)
-        reply_msg = "\n".join(Schedule.get_by_user_id(profile.user_id))
+        reply_msg = str(Schedule.get_by_user_id(profile.user_id))
     else:
         # それ以外はオウム返し
         reply_msg = msg_from
