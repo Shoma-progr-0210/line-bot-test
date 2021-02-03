@@ -90,7 +90,7 @@ def handle_message(event):
         schedule_schema = ScheduleSchema(many=True)
         message_service = MessageService()
         # jsonがlist型になるので、str型に変換
-        reply_msg = message_service.create_message_from_json(str(schedule_schema.dump(schedules)))
+        reply_msg = message_service.create_message_from_json(schedule_schema.dump(schedules)[0])
     else:
         # それ以外はオウム返し
         reply_msg = msg_from
