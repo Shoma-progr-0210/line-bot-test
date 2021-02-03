@@ -16,6 +16,7 @@ from linebot.models import (
 
 from reminder.app import app
 from reminder.models.schedule import Schedule, ScheduleSchema
+from reminder.service.message import MessageService
 
 
 #環境変数取得
@@ -66,16 +67,16 @@ def handle_message(event):
         reply_msg = "文字数は " + str(len(txt)) + " 文字です。"
     elif msg_from.startswith("登録\n"):
         # 登録
-        # 時間: %Y/%m/%d %H:%M
         # 予定名
+        # 時間: %Y/%m/%d %H:%M
         # メッセージ
         try:
             profile = line_bot_api.get_profile(event.source.user_id)
             app.logger.info(f"user profile => {profile}")
             data = msg_from.split("\n")
-            name = data[2]
+            name = data[1]
             message = data[3]
-            time = datetime.strptime(data[1], '%Y/%m/%d %H:%M')
+            time = datetime.strptime(data[2], '%Y/%m/%d %H:%M')
             result = Schedule.create(profile.user_id, name, message, time)
             app.logger.info(f"create => {result}")
 
@@ -87,9 +88,9 @@ def handle_message(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         schedules = Schedule.get_by_user_id(profile.user_id)
         schedule_schema = ScheduleSchema(many=True)
-        # app.logger.info(f"type => {type(schedule_schema.dump(schedules))}\ndata => {schedule_schema.dump(schedules)}")
-        # スケジュールのlist型なので、str型に変換
-        reply_msg = str(schedule_schema.dump(schedules))
+        message_service = MessageService()
+        # jsonがlist型になるので、str型に変換
+        reply_msg = message_service.create_message_from_json(str(schedule_schema.dump(schedules)))
     else:
         # それ以外はオウム返し
         reply_msg = msg_from
