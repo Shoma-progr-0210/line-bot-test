@@ -87,7 +87,7 @@ def handle_message(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         schedules = Schedule.get_by_user_id(profile.user_id)
         schedule_schema = ScheduleSchema(many=True)
-        reply_msg = schedule_schema.jsonify(schedule_schema)
+        reply_msg = schedule_schema.jsonify(schedules)
     else:
         # それ以外はオウム返し
         reply_msg = msg_from
