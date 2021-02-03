@@ -32,13 +32,13 @@ class Schedule(Base):
         return obj
 
     @classmethod
-    def get_by_id(cls, user_id):
+    def get_by_user_id(cls, user_id):
         """
         user_idを指定して登録済みスケジュールを取得
         :param user_id:
         :return: ユーザScheduleリスト
         """
-        return db.session.query(cls).filter(cls.user_id == user_id).one_or_none()
+        return db.session.query(cls).filter(cls.user_id == user_id)
 
     # @classmethod
     # def get_all(cls):
