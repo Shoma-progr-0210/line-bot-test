@@ -4,14 +4,14 @@ from reminder.jobs.remindmessage import remind_message
 
 class Config(object):
     SCHEDULER_API_ENABLED = True
-    # JOBS = [
-    #     {
-    #         'id': 'remind_job',
-    #         'func': 'remind_job',
-    #         'trigger': 'interval',
-    #         'minutes': 1
-    #     }
-    # ]
+    JOBS = [
+        {
+            'id': 'remind_job',
+            'func': 'remind_job',
+            'trigger': 'interval',
+            'seconds': 60
+        }
+    ]
 
 scheduler = APScheduler()
 
@@ -22,7 +22,6 @@ def remind_job():
 
 def scheduler_start(app):
     scheduler.init_app(app)
-    # app.config.from_object(Config())
-    scheduler.api_enabled = True
-    scheduler.add_job('remind_job', remind_job, 'interval', minutes=1)
+    app.config.from_object(Config())
+    # scheduler.api_enabled = True
     scheduler.start()
