@@ -21,7 +21,7 @@ def remind_job():
 
 
 def scheduler_start(app):
-    scheduler.init_app(app)
     app.config.from_object(Config())
+    scheduler.init_app(app)
     # scheduler.api_enabled = True
     scheduler.start()
