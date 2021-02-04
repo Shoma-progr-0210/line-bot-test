@@ -6,7 +6,7 @@ sched = BlockingScheduler(daemon=True)
 
 def remind_job():
     print('This job is run every a minute.')
-    remind_message()
+    # remind_message()
 
 
 def sched_start():
