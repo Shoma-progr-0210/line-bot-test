@@ -4,7 +4,6 @@ import logging
 
 from reminder.database import init_db
 import reminder.models
-from reminder.remind import sched_start
 
 
 app = Flask(__name__)
@@ -15,5 +14,3 @@ init_db(app)
 
 # レベルの変更
 app.logger.setLevel(logging.INFO)
-
-sched_start()
