@@ -7,7 +7,7 @@ class Config(object):
     JOBS = [
         {
             'id': 'remind_job',
-            'func': 'remind_job',
+            'func': 'advanced:remind_job',
             'trigger': 'interval',
             'seconds': 60
         }
