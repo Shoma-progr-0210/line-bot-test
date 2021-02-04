@@ -21,7 +21,7 @@ def remind_message():
     remind_schedules = Schedule.get_by_time(time_now)
     schedule_schema = ScheduleSchema(many=True)
     message_service = MessageService()
-    remind_msgs = message_service.create_reminds_from_list(remind_schedules)
+    remind_msgs = message_service.create_reminds_from_list(schedule_schema.dump(remind_schedules))
 
     for user_id, msg in remind_msgs.items():
         line_bot_api.push_message(user_id, messages=msg)

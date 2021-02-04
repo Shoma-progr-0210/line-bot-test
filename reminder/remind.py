@@ -12,7 +12,7 @@ scheduler = APScheduler()
 def remind_job():
     app = scheduler.app
     with app.app_context():
-        print('This job is run every a minute.')
+        app.logger.info('This job is run every a minute.')
         remind_message()
 
 
