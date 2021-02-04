@@ -7,3 +7,4 @@ ma = Marshmallow()
 def init_db(app):
     db.init_app(app)
     ma.init_app(app)
+    db.app = app
