@@ -17,7 +17,7 @@ from linebot.models import (
 from reminder.app import app
 from reminder.models.schedule import Schedule, ScheduleSchema
 from reminder.service.messageservice import MessageService
-# from reminder.remind import sched_start
+from reminder.remind import sched_start
 
 
 #環境変数取得
@@ -100,8 +100,8 @@ def handle_message(event):
         TextSendMessage(text=reply_msg))
 
 if __name__ == "__main__":
-    # # リマインドスケジュール起動
-    # sched_start()
+    # リマインドスケジュール起動
+    sched_start()
     #    app.run()
     port = int(os.getenv("PORT"))
     app.run(host="0.0.0.0", port=port)
