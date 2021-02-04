@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 from reminder.database import db, ma
 from reminder.models.base import Base
 
@@ -32,6 +34,15 @@ class Schedule(Base):
         :return: ユーザScheduleリスト
         """
         return db.session.query(cls).filter(cls.user_id == user_id).all()
+    
+    @classmethod
+    def get_by_time(cls, time):
+        """
+        時間を指定して登録済みスケジュールを取得
+        :param time:
+        :return: Scheduleリスト
+        """
+        return db.session.query(cls).filter(cls.time == time).all()
 
     # @classmethod
     # def get_all(cls):

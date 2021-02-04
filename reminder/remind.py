@@ -7,7 +7,7 @@ class Config(object):
 
 scheduler = APScheduler()
 
-# cron examples
+# リマインド
 @scheduler.task('cron', id='remind_job', minute='*')
 def remind_job():
     print('This job is run every a minute.')

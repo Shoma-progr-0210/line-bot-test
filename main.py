@@ -20,7 +20,7 @@ from reminder.service.messageservice import MessageService
 from reminder.remind import scheduler_start
 
 
-#環境変数取得
+# 環境変数取得
 CHANNEL_ACCESS_TOKEN = os.environ["CHANNEL_ACCESS_TOKEN"]
 CHANNEL_SECRET = os.environ["CHANNEL_SECRET"]
 # DB_HOST = os.environ["DB_HOST"]
