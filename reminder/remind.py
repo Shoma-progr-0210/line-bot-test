@@ -1,7 +1,6 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 from reminder.jobs.remindmessage import remind_message
 
-sched = BlockingScheduler(daemon=True)
 
 def remind_job():
     print('This job is run every a minute.')
@@ -9,5 +8,6 @@ def remind_job():
 
 
 def sched_start():
-    sched.add_job(remind_job,'cron',minute=1)
+    sched = BlockingScheduler(daemon=True)
+    sched.add_job(remind_job, 'interval', minute=1)
     sched.start()
