@@ -10,8 +10,10 @@ scheduler = APScheduler()
 # リマインド
 @scheduler.task('cron', id='remind_job', minute='*')
 def remind_job():
-    print('This job is run every a minute.')
-    remind_message()
+    app = scheduler.app
+    with app.app_context():
+        print('This job is run every a minute.')
+        remind_message()
 
 
 def scheduler_start(app):
