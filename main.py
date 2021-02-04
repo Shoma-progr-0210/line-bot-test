@@ -94,6 +94,7 @@ def handle_message(event):
         reply_msg = message_service.create_message_from_list(schedule_schema.dump(schedules))
     else:
         # それ以外はオウム返し
+        print('test')
         reply_msg = msg_from
     line_bot_api.reply_message(
         event.reply_token,
