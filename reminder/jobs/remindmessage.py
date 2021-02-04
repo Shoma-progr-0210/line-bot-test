@@ -24,6 +24,7 @@ def remind_message():
     remind_msgs = message_service.create_reminds_from_list(schedule_schema.dump(remind_schedules))
 
     for user_id, msg in remind_msgs.items():
-        line_bot_api.push_message(user_id, messages=msg)
+        messages = TextSendMessage(text=msg)
+        line_bot_api.push_message(user_id, messages=messages)
 
     logger.info(f"reminds done. total count => {len(remind_msgs.keys())}")
