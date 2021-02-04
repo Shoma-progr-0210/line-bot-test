@@ -1,4 +1,4 @@
-
+from datetime import datetime
 
 class MessageService():
     def create_message_from_list(self, schedules):
@@ -8,7 +8,7 @@ class MessageService():
 
         for row in schedules:
             reply_lines.append(f"予定名: {row['name']}")
-            reply_lines.append(f"時間: {row['time'].strftime('%Y/%m/%d %H:%M')}")
+            reply_lines.append(f"時間: {datetime.strptime(row['time'], '%Y-%m-%dT%H:%M:%S').strftime('%Y/%m/%d %H:%M')}")
             reply_lines.append(f"メッセージ: {row['message']}")
             reply_lines.append("----------------------------------")
 
@@ -22,7 +22,7 @@ class MessageService():
             remind_lines.append("リマインド")
             remind_lines.append("----------------------------------")
             remind_lines.append(f"予定名: {row['name']}")
-            remind_lines.append(f"時間: {row['time'].strftime('%Y/%m/%d %H:%M')}")
+            remind_lines.append(f"時間: {datetime.strptime(row['time'], '%Y-%m-%dT%H:%M:%S').strftime('%Y/%m/%d %H:%M')}")
             remind_lines.append(f"メッセージ: {row['message']}")
             remind_lines.append("----------------------------------")
 
