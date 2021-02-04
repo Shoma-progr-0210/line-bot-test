@@ -4,13 +4,16 @@ import logging
 
 from reminder.database import init_db
 import reminder.models
+from reminder.remind import scheduler_start
 
 
 app = Flask(__name__)
 
+# レベルの変更
+app.logger.setLevel(logging.INFO)
+
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["DATABASE_URL"]
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 init_db(app)
-
-# レベルの変更
-app.logger.setLevel(logging.INFO)
+# リマインドスケジュール起動
+scheduler_start(app)
