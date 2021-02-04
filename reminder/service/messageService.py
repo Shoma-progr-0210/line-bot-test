@@ -8,7 +8,7 @@ class MessageService():
 
         for row in schedules:
             reply_lines.append(f"予定名: {row['name']}")
-            reply_lines.append(f"時間: {row['time']}")
+            reply_lines.append(f"時間: {row['time'].strftime('%Y/%m/%d %H:%M')}")
             reply_lines.append(f"メッセージ: {row['message']}")
             reply_lines.append("----------------------------------")
 

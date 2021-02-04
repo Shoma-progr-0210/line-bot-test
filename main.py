@@ -16,7 +16,7 @@ from linebot.models import (
 
 from reminder.app import app
 from reminder.models.schedule import Schedule, ScheduleSchema
-from reminder.service.messageService import MessageService
+from reminder.service.messageservice import MessageService
 
 
 #環境変数取得
