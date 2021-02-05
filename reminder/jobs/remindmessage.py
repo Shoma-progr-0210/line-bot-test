@@ -21,13 +21,15 @@ def remind_message():
     remind_schedules = Schedule.get_by_time(time_now)
     schedule_schema = ScheduleSchema(many=True)
     message_service = MessageService()
-    remind_msgs = message_service.create_reminds_from_list(schedule_schema.dump(remind_schedules))
+    remind_msgs_list = message_service.create_reminds_from_list(schedule_schema.dump(remind_schedules))
 
-    for user_id, msg in remind_msgs.items():
-        # messages = TextSendMessage(text=msg)
-        messages = FlexSendMessage(alt_text='リマインド', contents=msg)
-        line_bot_api.push_message(user_id, messages=messages)
-    logger.info(f"reminds done. total count => {len(remind_msgs.keys())}")
+    remind_count = 0
+    for user_id, msgs in remind_msgs_list.items():
+        for msg in msgs:
+            messages = FlexSendMessage(alt_text='リマインド', contents=msg)
+            line_bot_api.push_message(user_id, messages=messages)
+            remind_count += 1
+    logger.info(f"reminds done. total count => {remind_count}")
 
     delete_count = Schedule.delete_by_time(time_now)
     logger.info(f"delete done. total count => {delete_count}")
