@@ -101,11 +101,13 @@ def handle_message(event):
         # carousel_temlate = CarouselTemplate(columns=message_service.create_bubbles_from_list(schedule_schema.dump(schedules)))
         bubbles = message_service.create_bubbles_from_list(schedule_schema.dump(schedules))
         # reply_msg = FlexSendMessage.new_from_json_dict(bubbles)
-        line_bot_api.push_message(
-            to=profile.user_id,
-            messages=TemplateSendMessage(profile.user_id, messages=bubbles
+        line_bot_api.reply_message(
+            event.reply_token,
+            FlexSendMessage(
+                alt_text='alt_text',
+                contents=bubbles
+            )
         )
-    )
     else:
         # それ以外はオウム返し
         reply_msg = msg_from
