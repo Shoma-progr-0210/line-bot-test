@@ -98,17 +98,22 @@ def handle_message(event):
         message_service = MessageService()
         # jsonがlist型になるので、str型に変換
         carousel = message_service.create_carousel_from_list(schedule_schema.dump(schedules))
-        reply_msg = FlexSendMessage(
+        line_bot_api.reply_message(
+            event.reply_token,
+            FlexSendMessage(
                 alt_text='予定一覧',
                 contents=carousel
             )
+        )
     else:
         # それ以外はオウム返し
         reply_msg = msg_from
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=reply_msg)
-    )
+
+    if reply_msg:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=reply_msg)
+        )
 
 # FlexMessageのボタン押下
 @handler.add(PostbackEvent)
