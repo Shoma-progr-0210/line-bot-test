@@ -95,17 +95,20 @@ def handle_message(event):
     elif msg_from.startswith("予定一覧"):
         profile = line_bot_api.get_profile(event.source.user_id)
         schedules = Schedule.get_by_user_id(profile.user_id)
-        schedule_schema = ScheduleSchema(many=True)
-        message_service = MessageService()
-        # jsonがlist型になるので、str型に変換
-        carousel = message_service.create_carousel_from_list(schedule_schema.dump(schedules))
-        line_bot_api.reply_message(
-            event.reply_token,
-            FlexSendMessage(
-                alt_text='予定一覧',
-                contents=carousel
+        if schedules:
+            schedule_schema = ScheduleSchema(many=True)
+            message_service = MessageService()
+            # jsonがlist型になるので、str型に変換
+            carousel = message_service.create_carousel_from_list(schedule_schema.dump(schedules))
+            line_bot_api.reply_message(
+                event.reply_token,
+                FlexSendMessage(
+                    alt_text='予定一覧',
+                    contents=carousel
+                )
             )
-        )
+        else:
+            reply_msg = "登録された予定はありません"
     else:
         # それ以外はオウム返し
         reply_msg = msg_from
