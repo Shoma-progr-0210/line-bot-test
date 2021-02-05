@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from reminder.view.messagebubble import SCHEDULE_BUBBLE, CAROUSEL
+from reminder.view.messagebubble import SCHEDULE_BUBBLE, CAROUSEL, FLEX_MESSAGE
 
 class MessageService():
     def create_message_from_list(self, schedules):
@@ -33,6 +33,7 @@ class MessageService():
         return remind_msgs
 
     def create_bubbles_from_list(self, schedules):
+        flex_message = FLEX_MESSAGE
         carousel = CAROUSEL
         for row in schedules:
             bubble = SCHEDULE_BUBBLE
@@ -45,5 +46,6 @@ class MessageService():
                             content["text"] = v
             carousel["contents"].append(bubble)
 
-        return carousel
+        flex_message["contents"] = carousel
+        return flex_message
 

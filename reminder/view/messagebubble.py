@@ -1,3 +1,9 @@
+FLEX_MESSAGE = {
+    "type": "flex",
+   "altText": "myCausouelMessage",
+   "contents": {}
+}
+
 CAROUSEL = {
   "type": "carousel",
   "contents": []
