@@ -30,14 +30,14 @@ class MessageService():
             # remind_lines.append("----------------------------------")
 
             # remind_msgs[row["user_id"]] = "\n".join(remind_lines)
-            remind_msgs[row["user_id"]] = create_bubble(row)
+            remind_msgs[row["user_id"]] = self.create_bubble(row)
 
         return remind_msgs
 
     def create_carousel_from_list(self, schedules):
         carousel = copy.deepcopy(CAROUSEL)
         for row in schedules:
-            bubble = create_bubble(row)
+            bubble = self.create_bubble(row)
             carousel["contents"].append(bubble)
 
         return carousel
