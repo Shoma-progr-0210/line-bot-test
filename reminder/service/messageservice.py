@@ -1,7 +1,7 @@
 from datetime import datetime
 import copy
 
-from reminder.view.messagebubble import SCHEDULE_BUBBLE, CAROUSEL
+from reminder.view.messagebubble import SCHEDULE_BUBBLE, REMIND_BUBBLE, CAROUSEL
 
 class MessageService():
     def create_message_from_list(self, schedules):
@@ -20,30 +20,19 @@ class MessageService():
     def create_reminds_from_list(self, schedules):
         remind_msgs = {}
         for row in schedules:
-            # remind_lines = []
-
-            # remind_lines.append("リマインド")
-            # remind_lines.append("----------------------------------")
-            # remind_lines.append(f"予定名: {row['name']}")
-            # remind_lines.append(f"時間: {datetime.strptime(row['time'], '%Y-%m-%dT%H:%M:%S').strftime('%Y/%m/%d %H:%M')}")
-            # remind_lines.append(f"メッセージ: {row['message']}")
-            # remind_lines.append("----------------------------------")
-
-            # remind_msgs[row["user_id"]] = "\n".join(remind_lines)
-            remind_msgs[row["user_id"]] = self.create_bubble(row)
+            remind_msgs[row["user_id"]] = self.create_bubble(row, REMIND_BUBBLE)
 
         return remind_msgs
 
     def create_carousel_from_list(self, schedules):
         carousel = copy.deepcopy(CAROUSEL)
         for row in schedules:
-            bubble = self.create_bubble(row)
+            bubble = self.create_bubble(row, SCHEDULE_BUBBLE)
             carousel["contents"].append(bubble)
 
         return carousel
 
-    def create_bubble(self, schedule):
-        bubble = copy.deepcopy(SCHEDULE_BUBBLE)
+    def create_bubble(self, schedule, bubble):
         for k, v in schedule.items():
             if k == "time":
                 bubble["header"]["contents"][0]["text"] = datetime.strptime(v, '%Y-%m-%dT%H:%M:%S').strftime('%Y/%m/%d %H:%M')

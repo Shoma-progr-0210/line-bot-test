@@ -55,8 +55,8 @@ REMIND_BUBBLE = {
         "type": "button",
         "action": {
           "type": "postback",
-          "label": "編集",
-          "data": "edit"
+          "label": "確認",
+          "data": "check"
         },
         "margin": "none",
         "style": "secondary",

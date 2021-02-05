@@ -63,6 +63,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg_from = event.message.text
+    reply_msg = ""
     if msg_from == "ヘルプ" or msg_from == "help":
         # ヘルプメニュー
         reply_msg = "メニュー:\n" \
@@ -124,6 +125,11 @@ def on_postback(event):
         line_bot_api.push_message(
             to=user_id,
             messages=TextSendMessage(text='編集が押下されました')
+        )
+    elif postback_msg == 'check':
+        line_bot_api.push_message(
+            to=user_id,
+            messages=TextSendMessage(text='確認が押下されました')
         )
 
 if __name__ == "__main__":
