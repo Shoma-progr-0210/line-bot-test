@@ -20,8 +20,7 @@ class MessageService():
     def create_reminds_from_list(self, schedules):
         remind_msgs = {}
         for row in schedules:
-            i = len(remind_msgs[row["user_id"]]) if row["user_id"] in remind_msgs else 0
-            remind_msgs[row["user_id"]][i] = self.create_bubble(row, copy.deepcopy(REMIND_BUBBLE))
+            remind_msgs[row["user_id"]].append(self.create_bubble(row, copy.deepcopy(REMIND_BUBBLE)))
 
         return remind_msgs
 
