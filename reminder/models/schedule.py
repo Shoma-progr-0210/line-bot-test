@@ -71,6 +71,7 @@ class Schedule(Base):
         :return: 削除したスケジュール数
         """
         delete_count = db.session.query(cls).filter(cls.time < time).delete()
+        db.session.commit()
         return delete_count
 
 
