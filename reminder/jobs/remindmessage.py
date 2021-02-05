@@ -30,4 +30,4 @@ def remind_message():
     logger.info(f"reminds done. total count => {len(remind_msgs.keys())}")
 
     delete_count = Schedule.delete_by_time(time_now)
-    logger.info(f"delete done. total count => {len(delete_count)}")
+    logger.info(f"delete done. total count => {delete_count}")
