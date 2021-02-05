@@ -1,6 +1,5 @@
 CAROUSEL = {
-    "type": "flex",
-    "altText": "carousel",
+    "type": "carousel",
     "contents": []
 }
 

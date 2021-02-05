@@ -100,10 +100,10 @@ def handle_message(event):
         # reply_msg = message_service.create_message_from_list(schedule_schema.dump(schedules))
         # carousel_temlate = CarouselTemplate(columns=message_service.create_bubbles_from_list(schedule_schema.dump(schedules)))
         bubbles = message_service.create_bubbles_from_list(schedule_schema.dump(schedules))
-        reply_msg = FlexSendMessage.new_from_json_dict(bubbles)
+        # reply_msg = FlexSendMessage.new_from_json_dict(bubbles)
         line_bot_api.push_message(
             to=profile.user_id,
-            messages=TemplateSendMessage(profile.user_id, messages=reply_msg
+            messages=TemplateSendMessage(profile.user_id, messages=bubbles
         )
     )
     else:
