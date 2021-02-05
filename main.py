@@ -36,6 +36,10 @@ handler = WebhookHandler(CHANNEL_SECRET)
 def hello_world():
     return "hello world!"
 
+@app.route("/activate")
+def hi():
+    return "OK"
+
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value

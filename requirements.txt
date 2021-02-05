@@ -5,3 +5,4 @@ Flask-SQLAlchemy==2.4.4
 flask-marshmallow==0.14.0
 marshmallow-sqlalchemy==0.24.1
 Flask-APScheduler==1.11.0
+requests==2.24.0
