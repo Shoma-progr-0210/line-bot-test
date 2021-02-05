@@ -26,7 +26,7 @@ def remind_message():
     remind_count = 0
     for user_id, msgs in remind_msgs_list.items():
         for msg in msgs:
-            messages = FlexSendMessage(alt_text='リマインド', contents=msg)
+            messages = FlexSendMessage(alt_text=msg["body"]["contents"][0]["text"], contents=msg)
             line_bot_api.push_message(user_id, messages=messages)
             remind_count += 1
     logger.info(f"reminds done. total count => {remind_count}")
