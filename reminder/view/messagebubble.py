@@ -16,6 +16,7 @@ SCHEDULE_BUBBLE = {
         "align": "start",
         "margin": "xs",
         "size": "xl",
+        "wrap": True,
         "weight": "bold",
         "style": "normal",
         "decoration": "none",
@@ -34,11 +35,13 @@ SCHEDULE_BUBBLE = {
       {
         "type": "text",
         "text": "name",
-        "size": "xxl"
+        "size": "xl",
+        "wrap": True
       },
       {
         "type": "text",
-        "text": "message"
+        "text": "message",
+        "wrap": True
       }
     ],
     "backgroundColor": "#ddffee"
