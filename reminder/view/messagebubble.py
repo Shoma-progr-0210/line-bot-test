@@ -135,6 +135,7 @@ SCHEDULE_BUBBLE = {
     ],
     "backgroundColor": "#ddddee"
   },
+  "size": "kilo",
   "styles": {
     "header": {
       "backgroundColor": "#88ff88",
