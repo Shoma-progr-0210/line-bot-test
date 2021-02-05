@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 import os
 
 from linebot import LineBotApi
-from linebot.models import TextSendMessage
+from linebot.models import TextSendMessage, FlexSendMessage
 
 from flask import current_app, logging
 from reminder.models.schedule import Schedule, ScheduleSchema
@@ -24,7 +24,8 @@ def remind_message():
     remind_msgs = message_service.create_reminds_from_list(schedule_schema.dump(remind_schedules))
 
     for user_id, msg in remind_msgs.items():
-        messages = TextSendMessage(text=msg)
+        # messages = TextSendMessage(text=msg)
+        messages = FlexSendMessage(alt_text='リマインド', contents=msg)
         line_bot_api.push_message(user_id, messages=messages)
 
     logger.info(f"reminds done. total count => {len(remind_msgs.keys())}")

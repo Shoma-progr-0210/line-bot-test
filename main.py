@@ -97,15 +97,12 @@ def handle_message(event):
         schedule_schema = ScheduleSchema(many=True)
         message_service = MessageService()
         # jsonがlist型になるので、str型に変換
-        # reply_msg = message_service.create_message_from_list(schedule_schema.dump(schedules))
-        # carousel_temlate = CarouselTemplate(columns=message_service.create_bubbles_from_list(schedule_schema.dump(schedules)))
-        bubbles = message_service.create_bubbles_from_list(schedule_schema.dump(schedules))
-        # reply_msg = FlexSendMessage.new_from_json_dict(bubbles)
+        carousel = message_service.create_carousel_from_list(schedule_schema.dump(schedules))
         line_bot_api.reply_message(
             event.reply_token,
             FlexSendMessage(
-                alt_text='alt_text',
-                contents=bubbles
+                alt_text='予定一覧',
+                contents=carousel
             )
         )
     else:

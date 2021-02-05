@@ -20,31 +20,37 @@ class MessageService():
     def create_reminds_from_list(self, schedules):
         remind_msgs = {}
         for row in schedules:
-            remind_lines = []
+            # remind_lines = []
 
-            remind_lines.append("リマインド")
-            remind_lines.append("----------------------------------")
-            remind_lines.append(f"予定名: {row['name']}")
-            remind_lines.append(f"時間: {datetime.strptime(row['time'], '%Y-%m-%dT%H:%M:%S').strftime('%Y/%m/%d %H:%M')}")
-            remind_lines.append(f"メッセージ: {row['message']}")
-            remind_lines.append("----------------------------------")
+            # remind_lines.append("リマインド")
+            # remind_lines.append("----------------------------------")
+            # remind_lines.append(f"予定名: {row['name']}")
+            # remind_lines.append(f"時間: {datetime.strptime(row['time'], '%Y-%m-%dT%H:%M:%S').strftime('%Y/%m/%d %H:%M')}")
+            # remind_lines.append(f"メッセージ: {row['message']}")
+            # remind_lines.append("----------------------------------")
 
-            remind_msgs[row["user_id"]] = "\n".join(remind_lines)
+            # remind_msgs[row["user_id"]] = "\n".join(remind_lines)
+            remind_msgs[row["user_id"]] = create_bubble(row)
 
         return remind_msgs
 
-    def create_bubbles_from_list(self, schedules):
+    def create_carousel_from_list(self, schedules):
         carousel = copy.deepcopy(CAROUSEL)
         for row in schedules:
-            bubble = copy.deepcopy(SCHEDULE_BUBBLE)
-            for k, v in row.items():
-                if k == "time":
-                    bubble["header"]["contents"][0]["text"] = datetime.strptime(v, '%Y-%m-%dT%H:%M:%S').strftime('%Y/%m/%d %H:%M')
-                else:
-                    for i, content in enumerate(bubble["body"]["contents"]):
-                        if content["text"] == k:
-                            bubble["body"]["contents"][i]["text"] = v
+            bubble = create_bubble(row)
             carousel["contents"].append(bubble)
 
         return carousel
+
+    def create_bubble(self, schedule):
+        bubble = copy.deepcopy(SCHEDULE_BUBBLE)
+        for k, v in schedule.items():
+            if k == "time":
+                bubble["header"]["contents"][0]["text"] = datetime.strptime(v, '%Y-%m-%dT%H:%M:%S').strftime('%Y/%m/%d %H:%M')
+            else:
+                for i, content in enumerate(bubble["body"]["contents"]):
+                    if content["text"] == k:
+                        bubble["body"]["contents"][i]["text"] = v
+        
+        return bubble
 
