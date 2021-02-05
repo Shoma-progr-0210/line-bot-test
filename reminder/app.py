@@ -16,5 +16,5 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 with app.app_context():
     init_db(app)
     # リマインドスケジュール起動
-    from reminder.remind import scheduler_start
+    from reminder.schedule import scheduler_start
     scheduler_start(app)
