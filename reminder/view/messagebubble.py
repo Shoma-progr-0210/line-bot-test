@@ -42,6 +42,7 @@ REMIND_BUBBLE = {
       {
         "type": "text",
         "text": "message",
+        "margin": "lg",
         "wrap": True
       }
     ],
@@ -112,6 +113,7 @@ SCHEDULE_BUBBLE = {
       {
         "type": "text",
         "text": "message",
+        "margin": "lg",
         "wrap": True
       }
     ],
