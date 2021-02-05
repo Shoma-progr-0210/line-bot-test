@@ -11,7 +11,10 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    FollowEvent, UnfollowEvent, MessageEvent, PostbackEvent,
+    TextMessage, TextSendMessage, TemplateSendMessage,
+    ButtonsTemplate, CarouselTemplate, CarouselColumn,
+    PostbackTemplateAction
 )
 
 from reminder.app import app
@@ -94,13 +97,31 @@ def handle_message(event):
         schedule_schema = ScheduleSchema(many=True)
         message_service = MessageService()
         # jsonがlist型になるので、str型に変換
-        reply_msg = message_service.create_message_from_list(schedule_schema.dump(schedules))
+        # reply_msg = message_service.create_message_from_list(schedule_schema.dump(schedules))
+        # carousel_temlate = CarouselTemplate(columns=message_service.create_bubbles_from_list(schedule_schema.dump(schedules)))
+        carousel_temlate = message_service.create_bubbles_from_list(schedule_schema.dump(schedules))
+        line_bot_api.push_message(
+            to=profile.user_id,
+            messages=TemplateSendMessage(alt_text='carousel template', template=carousel_temlate
+        )
+    )
     else:
         # それ以外はオウム返し
         reply_msg = msg_from
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=reply_msg))
+
+# FlexMessageのボタン押下
+@handler.add(PostbackEvent)
+def on_postback(event):
+    postback_msg = event.postback.data
+    user_id = event.source.user_id
+    if postback_msg == 'edit':
+        line_bot_api.push_message(
+            to=user_id,
+            messages=TextSendMessage(text='編集が押下されました')
+        )
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT"))

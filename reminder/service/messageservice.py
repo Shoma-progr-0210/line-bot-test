@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from reminder.view.messagebubble import SCHEDULE_BUBBLE, CAROUSEL
+
 class MessageService():
     def create_message_from_list(self, schedules):
         reply_lines = []
@@ -29,4 +31,19 @@ class MessageService():
             remind_msgs[row["user_id"]] = "\n".join(remind_lines)
 
         return remind_msgs
+
+    def create_bubbles_from_list(self, schedules):
+        carousel = CAROUSEL
+        for row in schedules:
+            bubble = SCHEDULE_BUBBLE
+            for k, v in row.items():
+                if k == "time":
+                    bubble["header"]["contents"][0]["text"] = datetime.strptime(v, '%Y-%m-%dT%H:%M:%S').strftime('%Y/%m/%d %H:%M')
+                else:
+                    for content in bubble["body"]["contents"]:
+                        if content["text"] == k:
+                            content["text"] = v
+            carousel["contents"].append(bubble)
+
+        return carousel
 
