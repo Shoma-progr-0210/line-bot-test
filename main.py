@@ -12,7 +12,7 @@ from linebot.exceptions import (
 )
 from linebot.models import (
     FollowEvent, UnfollowEvent, MessageEvent, PostbackEvent,
-    TextMessage, TextSendMessage, TemplateSendMessage,
+    TextMessage, TextSendMessage, FlexSendMessage, TemplateSendMessage,
     ButtonsTemplate, CarouselTemplate, CarouselColumn,
     PostbackTemplateAction
 )
@@ -99,10 +99,11 @@ def handle_message(event):
         # jsonがlist型になるので、str型に変換
         # reply_msg = message_service.create_message_from_list(schedule_schema.dump(schedules))
         # carousel_temlate = CarouselTemplate(columns=message_service.create_bubbles_from_list(schedule_schema.dump(schedules)))
-        carousel_temlate = message_service.create_bubbles_from_list(schedule_schema.dump(schedules))
+        bubbles = message_service.create_bubbles_from_list(schedule_schema.dump(schedules))
+        reply_msg = FlexSendMessage.new_from_json_dict(bubbles)
         line_bot_api.push_message(
             to=profile.user_id,
-            messages=TemplateSendMessage(alt_text='carousel template', template=carousel_temlate
+            messages=TemplateSendMessage(profile.user_id, messages=reply_msg
         )
     )
     else:
