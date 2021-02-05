@@ -16,12 +16,12 @@ def remind_job():
         app.logger.info('This remind job is run every a minute.')
         remind_message()
 
-# herokuのスリーブ防止
-@scheduler.task('cron', id='activate_job', minute='*/1')
+# herokuのスリープ防止
+@scheduler.task('cron', id='activate_job', minute='*/15')
 def activate_job():
     app = scheduler.app
     with app.app_context():
-        app.logger.info('This activate job is run every a minute.')
+        app.logger.info('This activate job is run every 15 minutes.')
         heroku_activate()
 
 def scheduler_start(app):
