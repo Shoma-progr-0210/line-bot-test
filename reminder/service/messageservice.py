@@ -41,7 +41,7 @@ class MessageService():
                 if k == "time":
                     bubble["header"]["contents"][0]["text"] = datetime.strptime(v, '%Y-%m-%dT%H:%M:%S').strftime('%Y/%m/%d %H:%M')
                 else:
-                    for i, content in bubble["body"]["contents"]:
+                    for i, content in enumerate(bubble["body"]["contents"]):
                         if content["text"] == k:
                             bubble["body"]["contents"][i]["text"] = v
             carousel["contents"].append(bubble)
