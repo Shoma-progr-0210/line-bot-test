@@ -68,12 +68,10 @@ class Schedule(Base):
         """
         時間を指定してスケジュール削除
         :param time:
-        :return: 削除したスケジュール
+        :return: 削除したスケジュール数
         """
-        obj = db.session.query(cls).filter(cls.time < time).all()
-        db.session.delete(obj)
-        db.session.commit()
-        return obj
+        delete_count = db.session.query(cls).filter(cls.time < time).delete()
+        return delete_count
 
 
     def __init__(self, user_id, name, message, time):

@@ -29,5 +29,5 @@ def remind_message():
         line_bot_api.push_message(user_id, messages=messages)
     logger.info(f"reminds done. total count => {len(remind_msgs.keys())}")
 
-    delete_schedules = Schedule.delete_by_time(time_now)
-    logger.info(f"delete done. total count => {len(delete_schedules)}")
+    delete_count = Schedule.delete_by_time(time_now)
+    logger.info(f"delete done. total count => {len(delete_count)}")
