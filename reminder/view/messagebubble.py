@@ -31,20 +31,9 @@ REMIND_BUBBLE = {
     "borderWidth": "none"
   },
   "hero": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "image",
-        "url": "https://.png",
-        "size": "0%"
-      },
-      {
-        "type": "spacer",
-        "size": "sm"
-      }
-    ],
-    "backgroundColor": "#00C7C7"
+    "type": "image",
+    "url": "https://.png",
+    "size": "2%"
   },
   "body": {
     "type": "box",
@@ -84,6 +73,11 @@ REMIND_BUBBLE = {
       }
     ],
     "backgroundColor": "#ffffff"
+  },
+  "styles": {
+    "hero": {
+      "backgroundColor": "#00C7C7"
+    }
   }
 }
 
@@ -159,7 +153,7 @@ SCHEDULE_BUBBLE = {
   },
   "styles": {
     "hero": {
-      "backgroundColor": "#00C7C7"
+      "backgroundColor": "#1E799E"
     }
   }
 }
