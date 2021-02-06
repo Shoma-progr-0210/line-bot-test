@@ -15,7 +15,7 @@ REMIND_BUBBLE = {
         "text": "time",
         "align": "start",
         "margin": "xs",
-        "size": "xl",
+        "size": "md",
         "wrap": True,
         "weight": "bold",
         "style": "normal",
@@ -83,6 +83,7 @@ REMIND_BUBBLE = {
 
 SCHEDULE_BUBBLE = {
   "type": "bubble",
+  "size": "kilo",
   "header": {
     "type": "box",
     "layout": "vertical",
@@ -92,7 +93,7 @@ SCHEDULE_BUBBLE = {
         "text": "time",
         "align": "start",
         "margin": "xs",
-        "size": "xl",
+        "size": "md",
         "wrap": True,
         "weight": "bold",
         "style": "normal",
