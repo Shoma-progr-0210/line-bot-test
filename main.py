@@ -100,6 +100,7 @@ def handle_message(event):
             message_service = MessageService()
             # jsonがlist型になるので、str型に変換
             carousel = message_service.create_carousel_from_list(schedule_schema.dump(schedules))
+            app.logger.info(carousel)
             line_bot_api.reply_message(
                 event.reply_token,
                 FlexSendMessage(
