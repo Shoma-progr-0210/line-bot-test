@@ -8,7 +8,7 @@ REMIND_BUBBLE = {
   "type": "bubble",
   "header": {
     "type": "box",
-    "layout": "vertical",
+    "layout": "horizontal",
     "contents": [
       {
         "type": "text",
@@ -76,7 +76,7 @@ REMIND_BUBBLE = {
   },
   "styles": {
     "hero": {
-      "backgroundColor": "#00C7C7"
+      "backgroundColor": "#339999"
     }
   }
 }
@@ -86,7 +86,7 @@ SCHEDULE_BUBBLE = {
   "size": "kilo",
   "header": {
     "type": "box",
-    "layout": "vertical",
+    "layout": "horizontal",
     "contents": [
       {
         "type": "text",
