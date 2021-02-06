@@ -15,7 +15,7 @@ REMIND_BUBBLE = {
         "text": "time",
         "align": "start",
         "margin": "xs",
-        "size": "md",
+        "size": "lg",
         "wrap": True,
         "weight": "bold",
         "style": "normal",
