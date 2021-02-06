@@ -119,8 +119,8 @@ SCHEDULE_BUBBLE = {
     "contents": [
       {
         "type": "image",
-        "url": "https://.png",
-        "size": "1%"
+        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+        "size": "0%"
       },
       {
         "type": "spacer",
