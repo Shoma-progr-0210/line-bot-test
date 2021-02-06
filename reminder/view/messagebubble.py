@@ -120,7 +120,7 @@ SCHEDULE_BUBBLE = {
       {
         "type": "image",
         "url": "https://.png",
-        "size": "0%"
+        "size": "1%"
       },
       {
         "type": "spacer",
