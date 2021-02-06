@@ -35,13 +35,13 @@ REMIND_BUBBLE = {
     "layout": "vertical",
     "contents": [
       {
-        "type": "spacer",
-        "size": "sm"
-      },
-      {
         "type": "image",
         "url": "https://.png",
         "size": "0%"
+      },
+      {
+        "type": "spacer",
+        "size": "sm"
       }
     ],
     "backgroundColor": "#00C7C7"
@@ -118,13 +118,13 @@ SCHEDULE_BUBBLE = {
     "layout": "vertical",
     "contents": [
       {
-        "type": "spacer",
-        "size": "sm"
-      },
-      {
         "type": "image",
         "url": "https://.png",
         "size": "0%"
+      },
+      {
+        "type": "spacer",
+        "size": "sm"
       }
     ],
     "backgroundColor": "#1E799E"
