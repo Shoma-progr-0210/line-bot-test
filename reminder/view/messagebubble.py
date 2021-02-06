@@ -26,7 +26,19 @@ REMIND_BUBBLE = {
         "color": "#ffffff"
       }
     ],
-    "backgroundColor": "#2f4f4f"
+    "backgroundColor": "#2f4f4f",
+    "cornerRadius": "none",
+    "borderWidth": "none"
+  },
+  "hero": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "spacer"
+      }
+    ],
+    "backgroundColor": "#00C7C7"
   },
   "body": {
     "type": "box",
@@ -46,7 +58,7 @@ REMIND_BUBBLE = {
         "wrap": True
       }
     ],
-    "backgroundColor": "#eeffee"
+    "backgroundColor": "#ffffff"
   },
   "footer": {
     "type": "box",
@@ -60,18 +72,12 @@ REMIND_BUBBLE = {
           "data": "check"
         },
         "margin": "none",
-        "style": "secondary",
-        "color": "#77bb88"
+        "style": "primary",
+        "height": "sm",
+        "color": "#007878"
       }
     ],
-    "backgroundColor": "#eeffee"
-  },
-  "styles": {
-    "header": {
-      "backgroundColor": "#88ff88",
-      "separator": False,
-      "separatorColor": "#00ff00"
-    }
+    "backgroundColor": "#ffffff"
   }
 }
 
@@ -97,7 +103,19 @@ SCHEDULE_BUBBLE = {
         "color": "#ffffff"
       }
     ],
-    "backgroundColor": "#2f2f4f"
+    "backgroundColor": "#182047",
+    "cornerRadius": "none",
+    "borderWidth": "none"
+  },
+  "hero": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "spacer"
+      }
+    ],
+    "backgroundColor": "#1E799E"
   },
   "body": {
     "type": "box",
@@ -117,7 +135,7 @@ SCHEDULE_BUBBLE = {
         "wrap": True
       }
     ],
-    "backgroundColor": "#ddddee"
+    "backgroundColor": "#ffffff"
   },
   "footer": {
     "type": "box",
@@ -131,18 +149,11 @@ SCHEDULE_BUBBLE = {
           "data": "edit"
         },
         "margin": "none",
-        "style": "secondary",
-        "color": "#6688cc"
+        "style": "primary",
+        "height": "sm",
+        "color": "#385077"
       }
     ],
-    "backgroundColor": "#ddddee"
-  },
-  "size": "kilo",
-  "styles": {
-    "header": {
-      "backgroundColor": "#88ff88",
-      "separator": False,
-      "separatorColor": "#00ff00"
-    }
+    "backgroundColor": "#ffffff"
   }
 }
