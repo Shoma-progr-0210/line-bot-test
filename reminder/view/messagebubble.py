@@ -114,20 +114,9 @@ SCHEDULE_BUBBLE = {
     "borderWidth": "none"
   },
   "hero": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "image",
-        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
-        "size": "1%"
-      },
-      {
-        "type": "spacer",
-        "size": "sm"
-      }
-    ],
-    "backgroundColor": "#1E799E"
+    "type": "image",
+    "url": "https://.png",
+    "size": "2%"
   },
   "body": {
     "type": "box",
@@ -167,5 +156,10 @@ SCHEDULE_BUBBLE = {
       }
     ],
     "backgroundColor": "#ffffff"
+  },
+  "styles": {
+    "hero": {
+      "backgroundColor": "#00C7C7"
+    }
   }
 }
