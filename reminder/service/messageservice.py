@@ -26,8 +26,10 @@ class MessageService():
         for k, v in schedule.items():
             if k == "time":
                 bubble["header"]["contents"][0]["contents"][0]["text"] = datetime.strptime(v, '%Y-%m-%dT%H:%M:%S').strftime('%Y/%m/%d %H:%M')
-            elif k == "name":
+            elif k == "label":
                 bubble["header"]["contents"][1]["contents"][0]["text"] = v
+            elif k == "name":
+                bubble["header"]["contents"][2]["contents"][0]["text"] = v
             else:
                 for i, content in enumerate(bubble["body"]["contents"]):
                     if content["text"] == k:
