@@ -25,7 +25,7 @@ class MessageService():
     def create_bubble(self, schedule, bubble):
         for k, v in schedule.items():
             if k == "time":
-                bubble["header"]["contents"][0]["text"] = datetime.strptime(v, '%Y-%m-%dT%H:%M:%S').strftime('%Y/%m/%d %H:%M')
+                bubble["header"]["contents"]["contents"][0]["text"] = datetime.strptime(v, '%Y-%m-%dT%H:%M:%S').strftime('%Y/%m/%d %H:%M')
             else:
                 for i, content in enumerate(bubble["body"]["contents"]):
                     if content["text"] == k:
