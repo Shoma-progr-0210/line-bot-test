@@ -17,7 +17,7 @@ REMIND_BUBBLE = {
         "contents": [
           {
             "type": "text",
-            "text": "2021/2/7 9:44",
+            "text": "time",
             "size": "sm",
             "color": "#ffffff",
             "align": "center",
@@ -29,8 +29,8 @@ REMIND_BUBBLE = {
         "backgroundColor": "#ffa500",
         "flex": 0,
         "position": "relative",
-        "cornerRadius": "100px",
-        "width": "200px",
+        "cornerRadius": "sm",
+        "width": "180px",
         "height": "30px",
         "offsetEnd": "8px",
         "offsetBottom": "10px"
@@ -110,8 +110,8 @@ SCHEDULE_BUBBLE = {
         "backgroundColor": "#66cdaa",
         "flex": 0,
         "position": "relative",
-        "cornerRadius": "100px",
-        "width": "200px",
+        "cornerRadius": "sm",
+        "width": "180px",
         "height": "30px",
         "offsetEnd": "8px",
         "offsetBottom": "10px"
