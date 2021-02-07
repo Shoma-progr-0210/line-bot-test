@@ -6,34 +6,49 @@ CAROUSEL = {
 
 REMIND_BUBBLE = {
   "type": "bubble",
+  "size": "mega",
   "header": {
     "type": "box",
-    "layout": "horizontal",
+    "layout": "vertical",
     "contents": [
       {
-        "type": "text",
-        "text": "time",
-        "align": "start",
-        "margin": "xs",
-        "size": "lg",
-        "wrap": True,
-        "weight": "bold",
-        "style": "normal",
-        "decoration": "none",
-        "offsetTop": "none",
-        "offsetBottom": "none",
-        "offsetStart": "xxl",
-        "color": "#ffffff"
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "2021/2/7 9:44",
+            "size": "sm",
+            "color": "#ffffff",
+            "align": "center",
+            "gravity": "center",
+            "offsetTop": "none",
+            "weight": "bold"
+          }
+        ],
+        "backgroundColor": "#ffa500",
+        "flex": 0,
+        "position": "relative",
+        "cornerRadius": "100px",
+        "width": "200px",
+        "height": "30px",
+        "offsetEnd": "8px",
+        "offsetBottom": "10px"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "name",
+            "size": "xl",
+            "weight": "bold",
+            "wrap": True
+          }
+        ]
       }
-    ],
-    "backgroundColor": "#2f4f4f",
-    "cornerRadius": "none",
-    "borderWidth": "none"
-  },
-  "hero": {
-    "type": "image",
-    "url": "https://.png",
-    "size": "2%"
+    ]
   },
   "body": {
     "type": "box",
@@ -41,16 +56,10 @@ REMIND_BUBBLE = {
     "contents": [
       {
         "type": "text",
-        "text": "name",
-        "size": "xl",
-        "weight": "bold",
-        "wrap": True
-      },
-      {
-        "type": "text",
         "text": "message",
-        "margin": "lg",
-        "wrap": True
+        "margin": "none",
+        "wrap": True,
+        "offsetBottom": "lg"
       }
     ],
     "backgroundColor": "#ffffff"
@@ -69,93 +78,10 @@ REMIND_BUBBLE = {
         "margin": "none",
         "style": "primary",
         "height": "sm",
-        "color": "#007878"
+        "color": "#d2691e"
       }
     ],
     "backgroundColor": "#ffffff"
-  },
-  "styles": {
-    "hero": {
-      "backgroundColor": "#339999"
-    }
-  }
-}
-
-SCHEDULE_BUBBLE = {
-  "type": "bubble",
-  "size": "kilo",
-  "header": {
-    "type": "box",
-    "layout": "horizontal",
-    "contents": [
-      {
-        "type": "text",
-        "text": "time",
-        "align": "start",
-        "margin": "xs",
-        "size": "md",
-        "wrap": True,
-        "weight": "bold",
-        "style": "normal",
-        "decoration": "none",
-        "offsetTop": "none",
-        "offsetBottom": "none",
-        "offsetStart": "xxl",
-        "color": "#ffffff"
-      }
-    ],
-    "backgroundColor": "#182047",
-    "cornerRadius": "none",
-    "borderWidth": "none"
-  },
-  "hero": {
-    "type": "image",
-    "url": "https://.png",
-    "size": "2%"
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "name",
-        "size": "xl",
-        "weight": "bold",
-        "wrap": True
-      },
-      {
-        "type": "text",
-        "text": "message",
-        "margin": "lg",
-        "wrap": True
-      }
-    ],
-    "backgroundColor": "#ffffff"
-  },
-  "footer": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "button",
-        "action": {
-          "type": "postback",
-          "label": "編集",
-          "data": "edit"
-        },
-        "margin": "none",
-        "style": "primary",
-        "height": "sm",
-        "color": "#385077"
-      }
-    ],
-    "backgroundColor": "#ffffff"
-  },
-  "styles": {
-    "hero": {
-      "backgroundColor": "#1E799E"
-    }
   }
 }
 
