@@ -27,7 +27,11 @@ class MessageService():
             if k == "time":
                 bubble["header"]["contents"][0]["contents"][0]["text"] = datetime.strptime(v, '%Y-%m-%dT%H:%M:%S').strftime('%Y/%m/%d %H:%M')
             elif k == "label":
-                bubble["header"]["contents"][1]["contents"][0]["text"] = v
+                if v:
+                    bubble["header"]["contents"][1]["contents"][0]["text"] = v
+                else:
+                    bubble["header"]["contents"][1]["contents"][0]["text"] = "ラベルなし"
+                    bubble["header"]["contents"][1]["backgroundColor"] = "#999999"
             elif k == "name":
                 bubble["header"]["contents"][2]["contents"][0]["text"] = v
             else:

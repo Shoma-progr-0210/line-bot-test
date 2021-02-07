@@ -10,18 +10,20 @@ class Schedule(Base):
     name = db.Column(db.String(30))
     message = db.Column(db.String(255))
     time = db.Column(db.DateTime, nullable=False)
+    label = db.Column(db.String(30))
 
     @classmethod
-    def create(cls, user_id, name, message, time):
+    def create(cls, user_id, name, message, time, label):
         """
         リマインドスケジュールを作成する
         :param user_id:
         :param name:
         :param message:
         :param time:
+        :param label:
         :return: Schedule
         """
-        obj = cls(user_id=user_id, name=name, message=message, time=time)
+        obj = cls(user_id=user_id, name=name, message=message, time=time, label=label)
         db.session.add(obj)
         db.session.commit()
         return obj
@@ -75,18 +77,19 @@ class Schedule(Base):
         return delete_count
 
 
-    def __init__(self, user_id, name, message, time):
+    def __init__(self, user_id, name, message, time, label):
         self.user_id = user_id
         self.name = name
         self.message = message
         self.time = time
+        self.label = label
 
     def __repr__(self):
-        return 'Schedule(id={0}, user_id={1}, name={2}, message={3}, time={4})'.format(
-            self.id, self.user_id, self.name, self.message, self.time
+        return 'Schedule(id={0}, user_id={1}, name={2}, message={3}, time={4}, label={5})'.format(
+            self.id, self.user_id, self.name, self.message, self.time, self.label
         )
 
 class ScheduleSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Schedule
-        fields = ('id', 'user_id', 'name', 'message', 'time')
+        fields = ('id', 'user_id', 'name', 'message', 'time', 'label')

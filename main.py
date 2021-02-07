@@ -68,24 +68,27 @@ def handle_message(event):
         # ヘルプメニュー
         reply_msg = "メニュー:\n" \
         + "(なし) => オウム返し\n" \
-        + "カウント or count => 二行目からの文字数を数えます(改行、空白は除きます)"
-    elif msg_from.startswith("カウント\n") or msg_from.startswith("count\n"):
-        # メッセージの文字数カウント
-        txt = msg_from.replace(" ","").replace("　","").replace("\n","").lstrip("カウント").lstrip("count")
-        reply_msg = "文字数は " + str(len(txt)) + " 文字です。"
-    elif msg_from.startswith("登録\n"):
+        + "登録 => リマインドの登録を行います。フォーマットは以下です。\n" \
+            + "登録\n" \
+            + "<予定名>\n" \
+            + "<時間(例：2021/2/7 23:38)>\n" \
+            + "<ラベル名>\n" \
+            + "<メッセージ>\n"
+    if msg_from.startswith("登録\n"):
         # 登録
         # 予定名
         # 時間: %Y/%m/%d %H:%M
+        # ラベル
         # メッセージ
         try:
             profile = line_bot_api.get_profile(event.source.user_id)
             app.logger.info(f"user profile => {profile}")
             data = msg_from.split("\n")
             name = data[1]
-            message = data[3]
+            message = data[4]
             time = datetime.strptime(data[2], '%Y/%m/%d %H:%M')
-            result = Schedule.create(profile.user_id, name, message, time)
+            label = data[3]
+            result = Schedule.create(profile.user_id, name, message, time, label)
             app.logger.info(f"create => {result}")
 
             reply_msg = "リマインドを登録しました。"
