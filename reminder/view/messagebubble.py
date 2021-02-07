@@ -37,6 +37,31 @@ REMIND_BUBBLE = {
       },
       {
         "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "label",
+            "size": "xs",
+            "color": "#ffffff",
+            "align": "center",
+            "gravity": "center"
+          }
+        ],
+        "backgroundColor": "#EC3D44",
+        "paddingAll": "2px",
+        "paddingStart": "4px",
+        "paddingEnd": "4px",
+        "flex": 0,
+        "position": "absolute",
+        "offsetStart": "210px",
+        "offsetTop": "10px",
+        "cornerRadius": "100px",
+        "width": "75px",
+        "height": "30px"
+      },
+      {
+        "type": "box",
         "layout": "vertical",
         "contents": [
           {
@@ -115,6 +140,31 @@ SCHEDULE_BUBBLE = {
         "height": "30px",
         "offsetEnd": "8px",
         "offsetBottom": "10px"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "label",
+            "size": "xs",
+            "color": "#ffffff",
+            "align": "center",
+            "gravity": "center"
+          }
+        ],
+        "backgroundColor": "#EC3D44",
+        "paddingAll": "2px",
+        "paddingStart": "4px",
+        "paddingEnd": "4px",
+        "flex": 0,
+        "position": "absolute",
+        "offsetStart": "210px",
+        "offsetTop": "10px",
+        "cornerRadius": "100px",
+        "width": "75px",
+        "height": "30px"
       },
       {
         "type": "box",
