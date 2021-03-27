@@ -47,7 +47,7 @@ def hi():
 
 @app.route("/register", methods=['POST'])
 def register():
-    body = json.loads(request.get_data(as_text=True))
+    body = json.loads(request.get_data())
     app.logger.info("Request body: " + body)
 
     return 'OK'
