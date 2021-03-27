@@ -3,6 +3,8 @@ import psycopg2
 import os
 from datetime import datetime, timedelta
 import traceback
+import requests
+import json
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -43,6 +45,12 @@ def hello_world():
 def hi():
     return "OK"
 
+@app.route("/register", methods=['POST'])
+def register():
+    body = json.loads(request.get_data(as_text=True))
+    app.logger.info("Request body: " + body)
+
+
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -74,7 +82,7 @@ def handle_message(event):
             + "<時間(例：2021/2/7 23:38)>\n" \
             + "<ラベル名>\n" \
             + "<メッセージ>\n"
-    if msg_from.startswith("登録\n"):
+    elif msg_from.startswith("登録\n"):
         # 登録
         # 予定名
         # 時間: %Y/%m/%d %H:%M
