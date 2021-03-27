@@ -50,6 +50,8 @@ def register():
     body = json.loads(request.get_data(as_text=True))
     app.logger.info("Request body: " + body)
 
+    return 'OK'
+
 
 @app.route("/callback", methods=['POST'])
 def callback():
