@@ -49,8 +49,8 @@ def hi():
 def register():
     # body = json.loads(request.get_data())
     json_data = request.get_json()
-    data = json.loads(json_data)
-    app.logger.info("Request body: " + data)
+    # data = json.loads(json_data)
+    app.logger.info("Request body: " + json_data)
 
     return 'OK'
 
