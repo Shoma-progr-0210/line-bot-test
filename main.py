@@ -36,6 +36,13 @@ CHANNEL_SECRET = os.environ["CHANNEL_SECRET"]
 line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(CHANNEL_SECRET)
 
+@app.after_request
+def after_request(response):
+  response.headers.add('Access-Control-Allow-Origin', os.environ["LIFF_URL"])
+  response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+  response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+  return response
+
 
 @app.route("/")
 def hello_world():

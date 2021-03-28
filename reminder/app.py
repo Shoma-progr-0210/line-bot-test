@@ -15,7 +15,7 @@ app.logger.setLevel(logging.INFO)
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["DB_URL"]
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 with app.app_context():
-    CORS(app)
+    # CORS(app)
     init_db(app)
     # リマインドスケジュール起動
     from reminder.schedule import scheduler_start
